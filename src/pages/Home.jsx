@@ -413,7 +413,7 @@ export function Home() {
         </h2>
         <p className="text-white/70 mb-10">{texts[lang].contactText}</p>
 
-        <div className="flex gap-6 overflow-x-auto overflow-y-visible px-2 pb-6 scrollbar-hide">
+        <div className="flex md:justify-center gap-6 overflow-x-auto md:overflow-visible px-2 pb-6 scrollbar-hide">
           {contacts.map((c, i) => {
             const Icon = c.icon;
 
