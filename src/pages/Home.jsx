@@ -53,21 +53,26 @@ export function Home() {
   const texts = {
     fr: {
       greeting: "Bonjour, je suis Gabin",
-      intro: "Développeur passionné, je crée des expériences interactives et immersives.",
+      intro:
+        "Développeur passionné, je crée des expériences interactives et immersives.",
       button: "Voir mes projets",
       aboutTitle: "À propos de moi",
-      aboutText: "Développeur web full stack, je conçois et fais évoluer des applications modernes avec une attention particulière portée à la qualité du code, à l’expérience utilisateur et à la maintenabilité des projets.",
+      aboutText:
+        "Développeur web full stack, je conçois et fais évoluer des applications modernes avec une attention particulière portée à la qualité du code, à l’expérience utilisateur et à la maintenabilité des projets.",
       skillsTitle: "Compétences",
       projectsTitle: "Mes Projets",
       contactTitle: "Contactez-moi",
-      contactText: "Vous pouvez me contacter via email ou sur mes réseaux sociaux.",
+      contactText:
+        "Vous pouvez me contacter via email ou sur mes réseaux sociaux.",
     },
     en: {
       greeting: "Hello, I'm Gabin",
-      intro: "Passionate developer crafting interactive and immersive experiences.",
+      intro:
+        "Passionate developer crafting interactive and immersive experiences.",
       button: "See my projects",
       aboutTitle: "About Me",
-      aboutText: "I am a full stack web developer who designs and develops modern applications with a focus on code quality, user experience, and project maintainability.",
+      aboutText:
+        "I am a full stack web developer who designs and develops modern applications with a focus on code quality, user experience, and project maintainability.",
       skillsTitle: "Skills",
       projectsTitle: "My Projects",
       contactTitle: "Get in Touch",
@@ -96,6 +101,7 @@ export function Home() {
     { name: "Node.js", type: "framework" },
     { name: "Next.js", type: "framework" },
     { name: "Turbo", type: "librarie" },
+    { name: "AI", type: "librarie" },
     { name: "Vue.js", type: "framework" },
     { name: "Flutter", type: "framework" },
     { name: "Symfony", type: "framework" },
@@ -130,7 +136,7 @@ export function Home() {
 
     if (clickCount + 1 >= 5) {
       setProfileImage((prev) =>
-        prev === "/Photo.jpg" ? oeufdepaque : "/Photo.jpg"
+        prev === "/Photo.jpg" ? oeufdepaque : "/Photo.jpg",
       );
       setClickCount(0);
       clearTimeout(timer);
@@ -151,7 +157,6 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-bg flex flex-col items-center justify-start p-10 relative overflow-hidden">
-
       {/* Floating HUD shapes */}
       <motion.div
         className="absolute w-96 h-96 bg-accent/10 rounded-full top-1/4 left-1/4 blur-3xl"
@@ -166,9 +171,21 @@ export function Home() {
 
       {/* Navigation */}
       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 flex gap-6 z-50">
-        <a href="#hero" className="text-white/70 hover:text-accent transition">Accueil</a>
-        <a href="#projects" className="text-white/70 hover:text-accent transition">Projets</a>
-        <a href="#contact" className="text-white/70 hover:text-accent transition">Contact</a>
+        <a href="#hero" className="text-white/70 hover:text-accent transition">
+          Accueil
+        </a>
+        <a
+          href="#projects"
+          className="text-white/70 hover:text-accent transition"
+        >
+          Projets
+        </a>
+        <a
+          href="#contact"
+          className="text-white/70 hover:text-accent transition"
+        >
+          Contact
+        </a>
       </div>
 
       <motion.div
@@ -233,7 +250,9 @@ export function Home() {
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl bg-glass backdrop-blur-glass rounded-3xl border border-white/10 p-10 shadow-lg mb-16"
       >
-        <h2 className="text-white text-3xl font-semibold mb-4">{texts[lang].aboutTitle}</h2>
+        <h2 className="text-white text-3xl font-semibold mb-4">
+          {texts[lang].aboutTitle}
+        </h2>
         <p className="text-white/70 text-lg">{texts[lang].aboutText}</p>
       </motion.div>
 
@@ -246,7 +265,9 @@ export function Home() {
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl bg-glass backdrop-blur-glass rounded-3xl border border-white/10 p-10 shadow-lg mb-16"
       >
-        <h2 className="text-white text-3xl font-semibold mb-6">{texts[lang].skillsTitle}</h2>
+        <h2 className="text-white text-3xl font-semibold mb-6">
+          {texts[lang].skillsTitle}
+        </h2>
 
         {["language", "framework", "software", "librarie"].map((type, idx) => {
           const [open, setOpen] = useState(false);
@@ -311,7 +332,11 @@ export function Home() {
               key={p.id}
               onClick={() => setSelectedProject(p)}
               className="bg-glass backdrop-blur-glass rounded-2xl border border-white/10 px-4 py-5 cursor-pointer flex flex-col items-center justify-center text-white/80 will-change-transform min-w-[160px] aspect-square overflow-visible"
-              whileHover={{ scale: 1.05, y: -10, boxShadow: "0 25px 50px rgba(61,245,255,0.2)" }}
+              whileHover={{
+                scale: 1.05,
+                y: -10,
+                boxShadow: "0 25px 50px rgba(61,245,255,0.2)",
+              }}
             >
               <img
                 src={p.image_url}
@@ -353,8 +378,12 @@ export function Home() {
               className="w-full h-48 object-contain rounded-xl mb-6"
             />
 
-            <h3 className="text-2xl font-semibold text-center mb-4">{selectedProject.name}</h3>
-            <p className="text-white/70 text-center mb-6">{selectedProject.description}</p>
+            <h3 className="text-2xl font-semibold text-center mb-4">
+              {selectedProject.name}
+            </h3>
+            <p className="text-white/70 text-center mb-6">
+              {selectedProject.description}
+            </p>
 
             <div className="flex justify-center">
               <a
@@ -382,9 +411,7 @@ export function Home() {
         <h2 className="text-white text-3xl font-semibold mb-4">
           {texts[lang].contactTitle}
         </h2>
-        <p className="text-white/70 mb-10">
-          {texts[lang].contactText}
-        </p>
+        <p className="text-white/70 mb-10">{texts[lang].contactText}</p>
 
         <div className="flex justify-center gap-8 flex-wrap">
           {contacts.map((c, i) => {
