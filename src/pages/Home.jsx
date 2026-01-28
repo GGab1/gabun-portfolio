@@ -326,7 +326,7 @@ export function Home() {
         </h2>
 
         {/* Carousel container */}
-        <div className="flex gap-6 overflow-visible pb-4">
+        <div className="flex gap-6 overflow-x-auto overflow-y-visible pb-6 px-1 scrollbar-hide">
           {projects.map((p) => (
             <motion.div
               key={p.id}
@@ -413,7 +413,7 @@ export function Home() {
         </h2>
         <p className="text-white/70 mb-10">{texts[lang].contactText}</p>
 
-        <div className="flex justify-center gap-8 flex-wrap">
+        <div className="flex gap-6 overflow-x-auto overflow-y-visible px-2 pb-6 scrollbar-hide">
           {contacts.map((c, i) => {
             const Icon = c.icon;
 
