@@ -413,7 +413,7 @@ export function Home() {
         </h2>
         <p className="text-white/70 mb-10">{texts[lang].contactText}</p>
 
-        <div className="flex md:justify-center gap-6 overflow-x-auto md:overflow-visible px-2 pb-6 scrollbar-hide">
+        <div className="flex gap-6 overflow-x-auto overflow-y-visible px-2 pb-6 scrollbar-hide">
           {contacts.map((c, i) => {
             const Icon = c.icon;
 
@@ -423,7 +423,7 @@ export function Home() {
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-glass backdrop-blur-glass rounded-2xl border border-white/10 w-32 h-32 flex flex-col items-center justify-center text-white/80 cursor-pointer will-change-transform"
+                className="bg-glass backdrop-blur-glass rounded-2xl border border-white/10 w-32 h-32 flex-shrink-0 flex flex-col items-center justify-center text-white/80 cursor-pointer will-change-transform"
                 whileHover={{
                   scale: 1.08,
                   y: -12,
@@ -442,7 +442,9 @@ export function Home() {
                 }}
               >
                 <Icon className="text-4xl mb-2 text-accent" />
-                <span className="text-sm font-medium">{c.name}</span>
+                <span className="text-sm font-medium text-center break-words">
+                  {c.name}
+                </span>
               </motion.a>
             );
           })}
