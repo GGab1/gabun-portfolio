@@ -341,7 +341,7 @@ export function Home() {
               <img
                 src={p.image_url}
                 alt={p.name}
-                className="w-24 h-24 rounded-xl mb-3 object-cover"
+                className="w-full h-full object-contain p-4"
               />
               <span className="text-lg font-medium">{p.name}</span>
             </motion.div>
