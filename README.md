@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# 🚀 Portfolio Personnel — Gabin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personnel développé avec React et Supabase, conçu pour présenter mes projets, compétences et expériences en développement web.
 
-Currently, two official plugins are available:
+Le projet inclut également une interface d'administration permettant de gérer dynamiquement les contenus (projets et compétences).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧰 Stack technique
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (Vite)
+- TailwindCSS
+- Framer Motion (animations)
+- Supabase (backend as a service)
+  - Base de données PostgreSQL
+  - Storage (images projets)
+- React Router DOM
+- React Icons
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🎯 Objectif du projet
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Ce portfolio a été conçu pour :
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Présenter mes projets de développement
+- Centraliser mes compétences techniques
+- Expérimenter une architecture fullstack moderne sans backend traditionnel
+- Mettre en place une interface d’administration simple et sécurisée
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏗️ Fonctionnalités
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🧑‍💻 Frontend (Portfolio public)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Page d’accueil animée
+- Section projets dynamique (depuis Supabase)
+- Section compétences dynamique
+- Modale de détail projet
+- Système multilingue (FR / EN)
+- Animations avec Framer Motion
+- Design responsive
+
+---
+
+### 🔐 Interface admin
+
+Accessible via authentification
+
+Fonctionnalités :
+
+- Ajout de projets
+- Suppression de projets
+- Modification de projets
+- Upload d’images (Supabase Storage)
+- Gestion des compétences (skills dynamiques)
+
+---
+
+## 🗄️ Base de données (Supabase)
+
+### Table `projects`
+
+- id
+- name
+- description
+- image_url
+- url
+- created_at
+
+### Table `skills`
+
+- id
+- name
+- type (language / framework / librarie / software)
+- created_at
+
+---
+
+## ⚙️ Installation locale
+
+```bash
+# installer les dépendances
+npm install
+
+# lancer le projet en local
+npm run dev
 ```
