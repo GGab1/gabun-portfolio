@@ -47,6 +47,7 @@ export function Home() {
   const [profileImage, setProfileImage] = useState("/Photo.jpg");
   const [clickCount, setClickCount] = useState(0);
   const [clickTimer, setClickTimer] = useState(null);
+  const [skills, setSkills] = useState([]);
 
   const oeufdepaque = "/pluh.jpg";
 
@@ -80,51 +81,6 @@ export function Home() {
     },
   };
 
-  const skills = [
-    // Langages
-    { name: "HTML", type: "language" },
-    { name: "CSS", type: "language" },
-    { name: "Javascript", type: "language" },
-    { name: "Java", type: "language" },
-    { name: "Python", type: "language" },
-    { name: "PHP", type: "language" },
-    { name: "SQL", type: "language" },
-    { name: "Dart", type: "language" },
-
-    // Frameworks / Libraries
-    { name: "React", type: "framework" },
-    { name: "TypeScript", type: "framework" },
-    { name: "Tailwind", type: "framework" },
-    { name: "Bootstrap", type: "framework" },
-    { name: "DaisyUI", type: "framework" },
-    { name: "Framer Motion", type: "librarie" },
-    { name: "Node.js", type: "framework" },
-    { name: "Next.js", type: "framework" },
-    { name: "Turbo", type: "librarie" },
-    { name: "AI", type: "librarie" },
-    { name: "Vue.js", type: "framework" },
-    { name: "Flutter", type: "framework" },
-    { name: "Symfony", type: "framework" },
-
-    // Logiciels / Outils
-    { name: "Azure DevOps", type: "software" },
-    { name: "Affinity", type: "software" },
-    { name: "DaVinci Resolve", type: "software" },
-    { name: "Trello", type: "software" },
-    { name: "Figma", type: "software" },
-    { name: "Jira", type: "software" },
-    { name: "Wordpress", type: "software" },
-    { name: "Prestashop", type: "software" },
-    { name: "VSCode", type: "software" },
-    { name: "PGAdmin", type: "software" },
-    { name: "Docker", type: "software" },
-    { name: "Canva", type: "software" },
-    { name: "Boosted", type: "software" },
-    { name: "Vercel", type: "software" },
-    { name: "PostgresSQL", type: "software" },
-    { name: "Supabase", type: "software" },
-  ];
-
   const handleProfileClick = () => {
     setClickCount((prev) => prev + 1);
 
@@ -144,15 +100,23 @@ export function Home() {
   };
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      const { data, error } = await supabase
+    const fetchData = async () => {
+      const { data: projectsData } = await supabase
         .from("projects")
         .select("*")
         .order("created_at", { ascending: true });
-      if (error) console.error("Error fetching projects:", error);
-      else setProjects(data);
+
+      const { data: skillsData, error } = await supabase
+        .from("skills")
+        .select("*");
+
+      if (skillsData) setSkills(skillsData);
+      if (error) console.error(error);
+
+      setProjects(projectsData || []);
     };
-    fetchProjects();
+
+    fetchData();
   }, []);
 
   return (
@@ -271,7 +235,7 @@ export function Home() {
 
         {["language", "framework", "software", "librarie"].map((type, idx) => {
           const [open, setOpen] = useState(false);
-          const filteredSkills = skills.filter((s) => s.type === type);
+          const filteredSkills = skills?.filter((s) => s.type === type) || [];
 
           return (
             <div key={idx} className="mb-4 w-full">
