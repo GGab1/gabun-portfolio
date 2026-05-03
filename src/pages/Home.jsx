@@ -49,6 +49,12 @@ export function Home() {
   const [clickTimer, setClickTimer] = useState(null);
   const [skills, setSkills] = useState([]);
 
+  const featuredProject = projects.find(
+    (p) =>
+      p.name?.toLowerCase().includes("ecommerce") ||
+      p.name?.toLowerCase().includes("api"),
+  );
+
   const oeufdepaque = "/pluh.jpg";
 
   const texts = {
@@ -59,8 +65,9 @@ export function Home() {
       button: "Voir mes projets",
       aboutTitle: "À propos de moi",
       aboutText:
-        "Développeur web full stack, je conçois et fais évoluer des applications modernes avec une attention particulière portée à la qualité du code, à l’expérience utilisateur et à la maintenabilité des projets.",
+        "Je développe des applications en mettant l'accent sur la structuration des données, la logique métier et les systèmes d'exploitation.",
       skillsTitle: "Compétences",
+      keyTitle: "Projet clé",
       projectsTitle: "Mes Projets",
       contactTitle: "Contactez-moi",
       contactText:
@@ -73,8 +80,9 @@ export function Home() {
       button: "See my projects",
       aboutTitle: "About Me",
       aboutText:
-        "I am a full stack web developer who designs and develops modern applications with a focus on code quality, user experience, and project maintainability.",
+        "I develop applications with a focus on data structuring, business logic, and operating systems.",
       skillsTitle: "Skills",
+      keyTitle: "Featured Project",
       projectsTitle: "My Projects",
       contactTitle: "Get in Touch",
       contactText: "You can reach me via email or on my social media.",
@@ -220,6 +228,50 @@ export function Home() {
         <p className="text-white/70 text-lg">{texts[lang].aboutText}</p>
       </motion.div>
 
+      {/* FEATURED PROJECT */}
+      {featuredProject && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-4xl bg-glass backdrop-blur-glass rounded-3xl border border-accent/30 p-10 shadow-lg mb-16"
+        >
+          <h2 className="text-white text-3xl font-semibold mb-6">
+            {texts[lang].keyTitle}
+          </h2>
+
+          <motion.div
+            className="flex flex-col items-center text-center cursor-pointer"
+            whileHover={{
+              scale: 1.03,
+              y: -5,
+            }}
+            onClick={() => setSelectedProject(featuredProject)}
+          >
+            <img
+              src={featuredProject.image_url}
+              alt={featuredProject.name}
+              className="w-48 h-48 object-contain mb-4"
+            />
+
+            <h3 className="text-white text-2xl font-semibold mb-2">
+              {featuredProject.name}
+            </h3>
+
+            <p className="text-white/70 text-center mb-6">
+              {lang === "fr"
+                ? featuredProject.description_fr
+                : featuredProject.description_en}
+            </p>
+
+            <div className="mt-6 bg-accent text-black font-semibold px-6 py-3 rounded-2xl hover:scale-105 transition-transform">
+              Voir le projet
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
       {/* SKILLS */}
       <motion.div
         id="skills"
@@ -291,25 +343,27 @@ export function Home() {
 
         {/* Carousel container */}
         <div className="flex gap-6 overflow-x-auto overflow-y-visible pb-6 px-1 scrollbar-hide">
-          {projects.map((p) => (
-            <motion.div
-              key={p.id}
-              onClick={() => setSelectedProject(p)}
-              className="bg-glass backdrop-blur-glass rounded-2xl border border-white/10 px-4 py-5 cursor-pointer flex flex-col items-center justify-center text-white/80 will-change-transform min-w-[160px] aspect-square overflow-visible"
-              whileHover={{
-                scale: 1.05,
-                y: -10,
-                boxShadow: "0 25px 50px rgba(61,245,255,0.2)",
-              }}
-            >
-              <img
-                src={p.image_url}
-                alt={p.name}
-                className="w-full h-full object-contain p-4"
-              />
-              <span className="text-lg font-medium">{p.name}</span>
-            </motion.div>
-          ))}
+          {projects
+            .filter((p) => p.id !== featuredProject?.id)
+            .map((p) => (
+              <motion.div
+                key={p.id}
+                onClick={() => setSelectedProject(p)}
+                className="bg-glass backdrop-blur-glass rounded-2xl border border-white/10 px-4 py-5 cursor-pointer flex flex-col items-center justify-center text-white/80 will-change-transform min-w-[160px] aspect-square overflow-visible"
+                whileHover={{
+                  scale: 1.05,
+                  y: -10,
+                  boxShadow: "0 25px 50px rgba(61,245,255,0.2)",
+                }}
+              >
+                <img
+                  src={p.image_url}
+                  alt={p.name}
+                  className="w-full h-full object-contain p-4"
+                />
+                <span className="text-lg font-medium">{p.name}</span>
+              </motion.div>
+            ))}
         </div>
       </motion.div>
 
@@ -346,7 +400,9 @@ export function Home() {
               {selectedProject.name}
             </h3>
             <p className="text-white/70 text-center mb-6">
-              {selectedProject.description}
+              {lang === "fr"
+                ? selectedProject.description_fr
+                : selectedProject.description_en}
             </p>
 
             <div className="flex justify-center">
