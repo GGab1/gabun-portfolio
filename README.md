@@ -6,6 +6,14 @@ Le projet inclut également une interface d'administration permettant de gérer 
 
 ---
 
+## ⚡ Résumé rapide
+
+Portfolio web développé dans une logique de structuration d’application front-end et de gestion de données via un backend as a service.
+
+👉 Objectif : présenter mes compétences techniques dans le cadre d’une poursuite d’études en MIAGE (systèmes d’information et data).
+
+---
+
 ## 🧰 Stack technique
 
 - React (Vite)
@@ -27,6 +35,16 @@ Ce portfolio a été conçu pour :
 - Centraliser mes compétences techniques
 - Expérimenter une architecture fullstack moderne sans backend traditionnel
 - Mettre en place une interface d’administration simple et sécurisée
+
+---
+
+## 🧠 Compétences mobilisées
+
+- Structuration d’une application web
+- Organisation des composants React
+- Gestion des données via une base relationnelle (Supabase / PostgreSQL)
+- Conception d’interface utilisateur (UX/UI)
+- Gestion de projet (conception → développement → tests)
 
 ---
 
@@ -75,6 +93,17 @@ Fonctionnalités :
 - name
 - type (language / framework / librarie / software)
 - created_at
+
+---
+
+## 📌 Apports du projet
+
+Ce projet m’a permis de renforcer :
+
+- ma capacité à structurer une application web complète
+- mon autonomie en développement
+- ma compréhension des interactions entre frontend et gestion de données
+- mes compétences en UX/UI et en conception d’interfaces
 
 ---
 
