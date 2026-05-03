@@ -67,7 +67,7 @@ export function Home() {
       aboutText:
         "Je développe des applications en mettant l'accent sur la structuration des données, la logique métier et les systèmes d'exploitation.",
       skillsTitle: "Compétences",
-      keyTitle: "Projet clé",
+      keyTitle: "Projet principal",
       projectsTitle: "Mes Projets",
       contactTitle: "Contactez-moi",
       contactText:
@@ -82,7 +82,7 @@ export function Home() {
       aboutText:
         "I develop applications with a focus on data structuring, business logic, and operating systems.",
       skillsTitle: "Skills",
-      keyTitle: "Featured Project",
+      keyTitle: "Main Project",
       projectsTitle: "My Projects",
       contactTitle: "Get in Touch",
       contactText: "You can reach me via email or on my social media.",
